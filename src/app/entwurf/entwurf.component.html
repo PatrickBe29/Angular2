@@ -1,0 +1,55 @@
+<mat-grid-list cols="12" rowHeight="50px">
+  <mat-grid-tile style="background: lightblue" colspan="2" rowspan="1">
+      Schritte
+  </mat-grid-tile>
+  <mat-grid-tile style="background: lightblue" colspan="5" rowspan="1">
+      Titel
+  </mat-grid-tile>
+  <mat-grid-tile style="background: lightblue" colspan="5" rowspan="1">
+      Konkrete Ausführungsschritte
+  </mat-grid-tile>
+
+</mat-grid-list>
+
+<form>
+
+<mat-grid-list cols="12" rowHeight="70px">
+    
+ <!--Step 1-->    
+  <mat-grid-tile colspan="2">
+      Step 1
+  </mat-grid-tile>
+  
+  <mat-grid-tile colspan="5">
+    <mat-form-field>
+        <input matInput placeholder="Step 1" value="" ng-model="step1">
+    </mat-form-field>
+    <button mat-mini-fab color="primary">+</button>
+  </mat-grid-tile>
+  
+  <mat-grid-tile colspan="5">
+      Konkrete Ausführungsschritte
+  </mat-grid-tile>
+
+ <!--Step 2-->
+  <mat-grid-tile colspan="2">
+      Step 2
+  </mat-grid-tile>
+  
+  <mat-grid-tile colspan="5">
+    <mat-form-field>
+        <input matInput placeholder="Step 2" value="">
+    </mat-form-field>
+    <button mat-mini-fab color="primary">+</button>
+  </mat-grid-tile>
+  
+  <mat-grid-tile colspan="5">
+      Konkrete Ausführungsschritte
+  </mat-grid-tile>
+
+
+</mat-grid-list>   
+ 
+</form>
+
+

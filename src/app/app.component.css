@@ -1,0 +1,18 @@
+::ng-deep .mat-tab-label {
+  justify-content: center;
+  min-width: 33% !important;
+  padding-bottom: 50px;
+}
+::ng-deep .mat-tab-group {
+  min-width: 100% !important;
+  /*margin-bottom: 70px*/
+
+}
+::ng-deep .mat-tab-body-wrapper {
+  /*position: fixed!important;*/
+  /*margin-top: 170px;*/
+  width: 100%;
+}
+form{
+  margin-top: 150px;
+}
