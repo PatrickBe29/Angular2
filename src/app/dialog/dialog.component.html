@@ -1,0 +1,27 @@
+<div>
+    
+    <h2>{{data.titel}}</h2>
+    <h2 mat-dialog-title>Konkrete Ausführungsschritte</h2>
+    <p>{{data.description}}</p>
+    <hr>
+    
+    <mat-dialog-content>
+        <input type="text" placeholder="Text" matInput [(ngModel)]="data.ka_text">
+        <hr>
+        <mat-radio-group [(ngModel)]="data.akteur">
+          <mat-radio-button value="Wir" ng-checked="true">Wir</mat-radio-button>
+          <mat-radio-button value="Kunde">Kunde</mat-radio-button>
+          <mat-radio-button value="Andere">Andere</mat-radio-button>
+        </mat-radio-group>
+    <br>
+    </mat-dialog-content>
+    <hr>
+    
+    <mat-dialog-actions>
+        <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial>Confirm</button>
+        <!--<button mat-raised-button (click)="onCloseCancel()">Cancel</button>-->
+        <button mat-raised-button [mat-dialog-close]="data">Cancel</button>
+    </mat-dialog-actions>
+    
+
+</div>

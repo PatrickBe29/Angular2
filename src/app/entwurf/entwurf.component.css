@@ -7,3 +7,48 @@
 form{
     padding-top: 6px;
 }
+
+#disabledButton{
+    color: white;
+    background: white;
+    box-shadow: none;
+}
+
+#deleteButton{
+    font-size: 0;
+    line-height: 20px;
+    min-width: 50px;
+    height: 18px;
+    padding: 0;
+    border-color: white;
+    -webkit-transition: 0.2s linear;
+    transition: 0.2s linear;
+    box-shadow: none;
+    width: 0;
+    background-color: white;
+}
+
+
+.span-to-delete {
+    display: inline-flex;
+    width: 100%;
+}
+
+.span-to-delete:hover #deleteButton{
+    border-color: red;
+    width: 70px;
+    font-size: 14px;
+}
+::ng-deep .mat-tab-group {
+  min-width: 100% !important;
+  /*margin-bottom: 70px*/
+
+}
+
+::ng-deep .mat-grid-tile .mat-figure{
+    display: block;
+}
+
+#div-ka{
+    width:100%;
+}
