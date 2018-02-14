@@ -26,6 +26,18 @@ ngOnInit() {
       'planung_ka': new FormArray([]),
       'beschaffung': new FormControl(null),
       'beschaffung_ka': new FormArray([]),
+      'vor_aufbereitung': new FormControl(null),
+      'vor_aufbereitung_ka': new FormArray([]),
+      'letzter_check': new FormControl(null),
+      'letzter_check_ka': new FormArray([]),
+      'ausfuehrung': new FormControl(null),
+      'ausfuehrung_ka': new FormArray([]),
+      'ausfuehrungsuerberwachung': new FormControl(null),
+      'ausfuehrungsuerberwachung_ka': new FormArray([]),
+      'noetige_anpassung': new FormControl(null),
+      'noetige_anpassung_ka': new FormArray([]),
+      'abschluss': new FormControl(null),
+      'abschluss_ka': new FormArray([])
     });
   }
   
@@ -65,7 +77,6 @@ description: string;
 // ka: KA = new KA('Akteur', 'Text');
 ka: KA;
 
-
 // ADD Konkreten Ausführungsschritt
 onAddKA(stepNumber: number){
       
@@ -82,9 +93,43 @@ onAddKA(stepNumber: number){
         this.description = 'Welche Inputs werden benötigt?';
         break; 
         }
+        case 3: { 
+        this.arrayToPush = "vor_aufbereitung_ka"; 
+        this.titel = 'Vor- / Aufbereitung';
+        this.description = 'Wie muss das Arbeitsumfeld oder die Inputs vor- oder aufbereitet werden?';
+        break; 
+        }
+        case 4: { 
+        this.arrayToPush = "letzter_check_ka"; 
+        this.titel = 'Letzter Check';
+        this.description = 'Wie wird sichergestellt, dass der Job erfolgreich ausgeführt wurde und das Inputs und Arbeitsumfeld in Ordnung sind?';
+        break; 
+        }
+        case 5: { 
+        this.arrayToPush = "ausfuehrung_ka"; 
+        this.titel = 'Ausführung';
+        this.description = 'Was muss getan werden, damit der Job erfolgreich durchgeführt werden kann?';
+        break; 
+        }
+        case 6: { 
+        this.arrayToPush = "ausfuehrungsuerberwachung_ka"; 
+        this.titel = 'Ausführungsüberwachung';
+        this.description = 'Was muss während der Ausführung kontrolliert werden, um sicherzustellen, dass der Job erfolgreich durchgeführt wird?';
+        break; 
+        }
+        case 7: { 
+        this.arrayToPush = "noetige_anpassung_ka"; 
+        this.titel = 'Nötige Anpassung';
+        this.description = 'Was muss angepasst werden, damit der Job erfolgreich durchgeführt werden kann? Wann, wie, wo sollten Änderungen gemacht werden?';
+        break; 
+        }
+        case 8: { 
+        this.arrayToPush = "abschluss_ka"; 
+        this.titel = 'Abschluss';
+        this.description = 'Welche Inputs werden benötigt?';
+        break; 
+        }
       }
-    
-    console.log(this.ka)
       
     let dialogRef = this.dialog.open(DialogComponent, {
       width: '600px',
@@ -93,11 +138,16 @@ onAddKA(stepNumber: number){
     
     dialogRef.afterClosed().subscribe(result => {
 
-      if(result.ka_text && result.akteur){
-      this.ka = new KA(result.akteur, result.ka_text)
-      const control = new FormControl(this.ka);
-      (<FormArray>this.entwurfForm.get(this.arrayToPush)).value.push(control.value)
-      console.log(this.entwurfForm.value)
+      if(result){
+        if(result.ka_text){
+          this.ka = new KA(result.akteur, result.ka_text)
+          const control = new FormControl(this.ka);
+          (<FormArray>this.entwurfForm.get(this.arrayToPush)).value.push(control.value)
+          console.log(this.entwurfForm.value)
+        } else {
+          alert("Bitte Text ausfüllen")
+        }
+
       }
     });
     
@@ -117,6 +167,30 @@ onDeleteKA(index, event, stepNumber){
         this.arrayToPush = "beschaffung_ka";
         break; 
         }
+        case 3: { 
+        this.arrayToPush = "vor_aufbereitung_ka";
+        break; 
+        }
+        case 4: { 
+        this.arrayToPush = "letzter_check_ka";
+        break; 
+        }
+        case 5: { 
+        this.arrayToPush = "ausfuehrung_ka";
+        break; 
+        }
+        case 6: { 
+        this.arrayToPush = "ausfuehrungsuerberwachung_ka";
+        break; 
+        }
+        case 7: { 
+        this.arrayToPush = "noetige_anpassung_ka";
+        break; 
+        }
+        case 8: { 
+        this.arrayToPush = "abschluss_ka";
+        break; 
+        }
       }
       
       
@@ -124,7 +198,6 @@ onDeleteKA(index, event, stepNumber){
     event.target.parentElement.parentElement.remove()
     console.log(this.entwurfForm.value)
   }
-  
   
 }
   

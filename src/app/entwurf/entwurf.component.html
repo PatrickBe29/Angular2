@@ -1,17 +1,18 @@
 <!--Header-->
 <mat-grid-list cols="12" rowHeight="50px">
-  <mat-grid-tile style="background: lightblue" colspan="2" rowspan="1">
+  <mat-grid-tile colspan="2" rowspan="1">
       <h2>Schritte</h2>
   </mat-grid-tile>
-  <mat-grid-tile style="background: lightblue" colspan="5" rowspan="1">
+  <mat-grid-tile colspan="5" rowspan="1">
       <h2>Titel</h2>
   </mat-grid-tile>
-  <mat-grid-tile style="background: lightblue" colspan="5" rowspan="1">
+  <mat-grid-tile colspan="5" rowspan="1">
       <h2>Konkrete Ausführungsschritte</h2>
   </mat-grid-tile>
 
 </mat-grid-list>
 
+<!--Form-->
 <form [formGroup]="entwurfForm" (ngSubmit)="onSubmit()">
 
     <mat-grid-list cols="12" rowHeight="70px">
@@ -33,12 +34,11 @@
         <button mat-mini-fab color="primary" disabled id="disabledButton">+</button>
       </mat-grid-tile>
       
-      
       <mat-grid-tile colspan="5">
           
       </mat-grid-tile>    
       
-     <!--1. Planung-->    
+     <!--1. Planung-->   
       <mat-grid-tile colspan="2">
           1. Planung
       </mat-grid-tile>
@@ -58,7 +58,7 @@
       </mat-grid-tile>
       
       <mat-grid-tile colspan="5" formArrayName="planung_ka">
-        <div class="float-left" id="div-ka">
+        <div class="float-left d-flex align-items-stretch" id="div-ka">
           <div *ngFor="let planungKA of entwurfForm.get('planung_ka').value; let i = index">
           <span class="span-to-delete">
             {{planungKA.akteur}}: {{planungKA.ka_text}}
@@ -94,6 +94,185 @@
         <div *ngFor="let beschaffungKA of entwurfForm.get('beschaffung_ka').value; let i = index">
           <span class="span-to-delete">{{beschaffungKA.akteur}}: {{beschaffungKA.ka_text}}
           <button id='deleteButton' type="button" mat-button color="warn" (click)="onDeleteKA(i, $event, 2)">Delete</button>
+          </span>
+        </div>
+        </div>
+
+      </mat-grid-tile>
+      
+     <!--3. Vor- / Aufbereitung-->    
+      <mat-grid-tile colspan="2">
+          3. Vor- / Aufbereitung
+      </mat-grid-tile>
+      
+      <mat-grid-tile colspan="5">
+        <mat-form-field>
+            <input 
+            matInput 
+            formControlName="vor_aufbereitung"
+            placeholder= 'Wie muss das Arbeitsumfeld oder die Inputs vor- oder aufbereitet werden?'
+            type="text"
+            id="vor_aufbereitung">
+        </mat-form-field>
+        <button mat-mini-fab color="primary"
+          type="button" 
+          (click)="onAddKA(3)">+</button>
+      </mat-grid-tile>
+      
+      <mat-grid-tile colspan="5" formArrayName="vor_aufbereitung_ka">
+        <div class="float-left" id="div-ka">
+        <div *ngFor="let vor_aufbereitungKA of entwurfForm.get('vor_aufbereitung_ka').value; let i = index">
+          <span class="span-to-delete">{{vor_aufbereitungKA.akteur}}: {{vor_aufbereitungKA.ka_text}}
+          <button id='deleteButton' type="button" mat-button color="warn" (click)="onDeleteKA(i, $event, 3)">Delete</button>
+          </span>
+        </div>
+        </div>
+
+      </mat-grid-tile>
+     <!--4. Letzter Check-->    
+      <mat-grid-tile colspan="2">
+          4. Letzter Check
+      </mat-grid-tile>
+      
+      <mat-grid-tile colspan="5">
+        <mat-form-field>
+            <input 
+            matInput 
+            formControlName="letzter_check"
+            placeholder= 'Wie wird sichergestellt, dass der Job erfolgreich ausgeführt wurde und das Inputs und Arbeitsumfeld in Ordnung sind?'
+            type="text"
+            id="letzter_check">
+        </mat-form-field>
+        <button mat-mini-fab color="primary"
+          type="button" 
+          (click)="onAddKA(4)">+</button>
+      </mat-grid-tile>
+      
+      <mat-grid-tile colspan="5" formArrayName="letzter_check">
+        <div class="float-left" id="div-ka">
+        <div *ngFor="let letzter_checkKA of entwurfForm.get('letzter_check_ka').value; let i = index">
+          <span class="span-to-delete">{{letzter_checkKA.akteur}}: {{letzter_checkKA.ka_text}}
+          <button id='deleteButton' type="button" mat-button color="warn" (click)="onDeleteKA(i, $event, 4)">Delete</button>
+          </span>
+        </div>
+        </div>
+
+      </mat-grid-tile>
+      
+     <!--5. Ausführung-->    
+      <mat-grid-tile colspan="2">
+          5. Ausführung
+      </mat-grid-tile>
+      
+      <mat-grid-tile colspan="5">
+        <mat-form-field>
+            <input 
+            matInput 
+            formControlName="ausfuehrung"
+            placeholder= 'Was muss getan werden, damit der Job erfolgreich durchgeführt werden kann?'
+            type="text"
+            id="ausfuehrung">
+        </mat-form-field>
+        <button mat-mini-fab color="primary"
+          type="button" 
+          (click)="onAddKA(5)">+</button>
+      </mat-grid-tile>
+      
+      <mat-grid-tile colspan="5" formArrayName="ausfuehrung_ka">
+        <div class="float-left" id="div-ka">
+        <div *ngFor="let ausfuehrungKA of entwurfForm.get('ausfuehrung_ka').value; let i = index">
+          <span class="span-to-delete">{{ausfuehrungKA.akteur}}: {{ausfuehrungKA.ka_text}}
+          <button id='deleteButton' type="button" mat-button color="warn" (click)="onDeleteKA(i, $event, 5)">Delete</button>
+          </span>
+        </div>
+        </div>
+
+      </mat-grid-tile>
+      
+     <!--6. Ausführungsüberwachung-->    
+      <mat-grid-tile colspan="2">
+          6. Ausführungsüberwachung
+      </mat-grid-tile>
+      
+      <mat-grid-tile colspan="5">
+        <mat-form-field>
+            <input 
+            matInput 
+            formControlName="ausfuehrungsuerberwachung"
+            placeholder= 'Was muss während der Ausführung kontrolliert werden, um sicherzustellen, dass der Job erfolgreich durchgeführt wird?'
+            type="text"
+            id="ausfuehrungsuerberwachung">
+        </mat-form-field>
+        <button mat-mini-fab color="primary"
+          type="button" 
+          (click)="onAddKA(6)">+</button>
+      </mat-grid-tile>
+      
+      <mat-grid-tile colspan="5" formArrayName="ausfuehrungsuerberwachung_ka">
+        <div class="float-left" id="div-ka">
+        <div *ngFor="let ausfuehrungsuerberwachungKA of entwurfForm.get('ausfuehrungsuerberwachung_ka').value; let i = index">
+          <span class="span-to-delete">{{ausfuehrungsuerberwachungKA.akteur}}: {{ausfuehrungsuerberwachungKA.ka_text}}
+          <button id='deleteButton' type="button" mat-button color="warn" (click)="onDeleteKA(i, $event, 6)">Delete</button>
+          </span>
+        </div>
+        </div>
+
+      </mat-grid-tile>
+      
+     <!--7. Nötige Anpassung-->    
+      <mat-grid-tile colspan="2">
+          7. Nötige Anpassung
+      </mat-grid-tile>
+      
+      <mat-grid-tile colspan="5">
+        <mat-form-field>
+            <input 
+            matInput 
+            formControlName="noetige_anpassung"
+            placeholder= 'Was muss angepasst werden, damit der Job erfolgreich durchgeführt werden kann? Wann, wie, wo sollten Änderungen gemacht werden?'
+            type="text"
+            id="noetige_anpassung">
+        </mat-form-field>
+        <button mat-mini-fab color="primary"
+          type="button" 
+          (click)="onAddKA(7)">+</button>
+      </mat-grid-tile>
+      
+      <mat-grid-tile colspan="5" formArrayName="noetige_anpassung_ka">
+        <div class="float-left" id="div-ka">
+        <div *ngFor="let noetige_anpassungKA of entwurfForm.get('noetige_anpassung_ka').value; let i = index">
+          <span class="span-to-delete">{{noetige_anpassungKA.akteur}}: {{noetige_anpassungKA.ka_text}}
+          <button id='deleteButton' type="button" mat-button color="warn" (click)="onDeleteKA(i, $event, 7)">Delete</button>
+          </span>
+        </div>
+        </div>
+
+      </mat-grid-tile>
+      
+     <!--8. Abschluss-->    
+      <mat-grid-tile colspan="2">
+          8. Abschluss
+      </mat-grid-tile>
+      
+      <mat-grid-tile colspan="5">
+        <mat-form-field>
+            <input 
+            matInput 
+            formControlName="abschluss"
+            placeholder= 'Welche Inputs werden benötigt?'
+            type="text"
+            id="abschluss">
+        </mat-form-field>
+        <button mat-mini-fab color="primary"
+          type="button" 
+          (click)="onAddKA(8)">+</button>
+      </mat-grid-tile>
+      
+      <mat-grid-tile colspan="5" formArrayName="abschluss_ka">
+        <div class="float-left" id="div-ka">
+        <div *ngFor="let abschlussKA of entwurfForm.get('abschluss_ka').value; let i = index">
+          <span class="span-to-delete">{{abschlussKA.akteur}}: {{abschlussKA.ka_text}}
+          <button id='deleteButton' type="button" mat-button color="warn" (click)="onDeleteKA(i, $event, 8)">Delete</button>
           </span>
         </div>
         </div>

@@ -12,13 +12,16 @@ export class DialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
+          data.akteur = "Wir";
     }
 
   ngOnInit() {
+
   }
 
   
-  onCloseCancel(): void{
+  
+  onCloseCancel():void{
     this.dialogRef.close();
   }
 }
