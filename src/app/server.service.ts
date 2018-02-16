@@ -8,7 +8,7 @@ export class ServerService {
         
     }
     
-    // POST
+    // POST - ist auskommentiert damit die Datenbank nicht zugemüllt wird
     // storeData(data: any[]){
     //     return this.http.post("https://didesigner-ee0ca.firebaseio.com/data.json", data);
     // }

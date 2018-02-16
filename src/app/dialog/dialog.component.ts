@@ -9,7 +9,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class DialogComponent implements OnInit {
 
-
+// data.akteur wird schon vorausgewählt damit es auch in dem Dialogfeld ausgewählt ist
+// im constructor werden auch die daten von der entwurf.ts aufgenommen
   constructor(public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
           data.akteur = "Wir";

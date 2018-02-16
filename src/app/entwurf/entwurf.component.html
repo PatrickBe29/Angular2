@@ -1,4 +1,5 @@
 <!--Header-->
+<!--Einfach nur die überschrifften als h2-->
 <mat-grid-list cols="12" rowHeight="50px">
   <mat-grid-tile colspan="2" rowspan="1">
       <h2>Schritte</h2>
@@ -13,6 +14,7 @@
 </mat-grid-list>
 
 <!--Form-->
+<!--Die Daten in der Form werden in eine formGroup gepackt und dann bei submit in der "entwurfForm" gespeichert-->
 <form [formGroup]="entwurfForm" (ngSubmit)="onSubmit()">
 
     <mat-grid-list cols="12" rowHeight="70px">
@@ -31,6 +33,7 @@
             type="text"
             id="titel">
         </mat-form-field>
+        <!--Der Button ist für Formatierungszwecke disabled und druch css ausgeblendet -->
         <button mat-mini-fab color="primary" disabled id="disabledButton">+</button>
       </mat-grid-tile>
       
@@ -45,6 +48,7 @@
       
       <mat-grid-tile colspan="5">
         <mat-form-field>
+          <!--Der formControlName wird für die zuordnung in der FormGroup benötigt-->
             <input 
             matInput 
             formControlName="planung"
@@ -52,6 +56,8 @@
             type="text"
             id="Planung">
         </mat-form-field>
+        <!--Die 1 in der Funktion onAddKA(1) ist für die Zuordnung der verschiedenen Cases und damit 
+        für den Dialog und in welchem Array der KA gespeichert wird -->
         <button mat-mini-fab color="primary"
           type="button" 
           (click)="onAddKA(1)">+</button>
@@ -59,9 +65,14 @@
       
       <mat-grid-tile colspan="5" formArrayName="planung_ka">
         <div class="float-left d-flex align-items-stretch" id="div-ka">
+          <!--In der ngFor Schleife werden alle eingegeben KA's in dem array planung_ka ausgegeben-->
           <div *ngFor="let planungKA of entwurfForm.get('planung_ka').value; let i = index">
           <span class="span-to-delete">
             {{planungKA.akteur}}: {{planungKA.ka_text}}
+            <!--Delete Button: Funktion onDeleteKA wird ausgeführt und folgende infos werden übergeben: 
+            i= index den das KA im Array hat
+            $event= Infos zu dem geklickten Element, also in dem Fall der Button
+            1= wie bei onAddKA(1) für die Zuordnung der Cases damit das richtige Array zum rauslösschen ausgewählt wird-->
             <button id='deleteButton' type="button" mat-button color="warn" (click)="onDeleteKA(i, $event, 1)">Delete</button>
           </span>
         </div>
@@ -69,7 +80,7 @@
         
       </mat-grid-tile>
       
-      
+     <!--Erklärungen für die Schritte 2-8 sind die gleichen wie für 1.Planung-->
      <!--2. Beschaffung-->    
       <mat-grid-tile colspan="2">
           2. Beschaffung
